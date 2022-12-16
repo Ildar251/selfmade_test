@@ -28,8 +28,7 @@ function html() {
 function scripts() {
   return src([
     'node_modules/jquery/dist/jquery.min.js',
-    'src/js/jquery.pagepiling.min.js',
-    'src/js/parallax.min.js',
+    'src/js/gsap.min.js',
     'src/js/app.js',
   ])
   .pipe(concat('app.min.js'))
@@ -40,7 +39,7 @@ function scripts() {
 }
 
 function styles() {
-  return src(['src/scss/main.scss', 'src/scss/jquery.pagepiling.min.css'])
+  return src(['src/scss/main.scss', 'src/scss/fonts.css'])
   .pipe(sass())
   .pipe(concat('app.min.css'))
   .pipe(autoprefixer({  overrideBrowserslist:  ['last 10 versions'], grid:true }))
@@ -66,8 +65,16 @@ function images() {
   .pipe(dest('dist/images'))
 }
 
+function fonts() {
+  return src([
+    'src/fonts/*',
+  ])
+  .pipe(dest('dist/fonts/'))
+}
+
 function startwatch() {
   watch('src/**/*.scss', styles)
+  watch('src/**/*.css', styles)
   watch('src/**/*.js', scripts)
   watch(['src/**.html', 'src/**/*.html'], html).on('change', sync.reload)
 }
@@ -77,5 +84,6 @@ exports.scripts = scripts
 exports.styles = styles
 exports.html = html
 exports.images = images
+exports.fonts = fonts
 exports.startwatch = startwatch
-exports.default = parallel(scripts, styles, html, images, browserSync, startwatch)
+exports.default = parallel(scripts, styles, html, images, fonts, browserSync, startwatch)

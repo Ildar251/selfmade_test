@@ -1,9 +1,9 @@
 {
-  "name": "yoursnaker",
+  "name": "selfmade",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "homepage": "https://ildar251.github.io/yourSNEAKER",
+  "homepage": "https://ildar251.github.io/selfmade_test",
   "scripts": {
     "deploy": "gh-pages -d dist"
   },
