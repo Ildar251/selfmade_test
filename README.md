@@ -1,1 +1,1 @@
-demo - https://ildar251.github.io/yourSNEAKER/
+demo - https://ildar251.github.io/selfmade_test/
